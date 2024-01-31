@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" conten="width=device-width", initial-scale="1">
+        <style>
+            body {
+                background-color: darkmagenta;
+            }
+            #bookthaiamgonnaread {
+                position: absolute;
+                color: #F57D49;
+                /* deactivate code */
+                background-color: #71CED9;
+                opacity: 1;
+                text-shadow: -1px 3px 1px #496B73;
+                border-right: 30px solid #F2594B;
+                width: 300px;
+                left: 200px;
+                top: 200px;
+                font-size: 90px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                text-align: right;
+                z-index: 1004;
+            }
+            #atec {
+                transition: font-size 3s ease-in;
+            }
+            #atec:hover {
+                font-size: 150px;
+            }
+            #sunlight {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                width: 100vw;
+                height: 900px;
+                opacity: .6;
+                border-radius: 0px 5px 5px 5px;
+                z-index: 1000;
+                transition: 1s ease-in;
+            }
+            #sunlight:hover {
+                opacity: 1;
+            }
+            #tree {
+                position: fixed;
+                bottom: -36px;
+                right: -24px;
+                height: 80vh;
+                width: 1080px;
+                opacity: .8;
+                border-radius: 15px 15px 5px 5px;
+                z-index: 1002;
+                transition: height 1s ease-in;
+            }
+            #tree:hover {
+                height: 90vh;
+            }
+            #donutdynamite {
+                position: absolute;
+                width: 40vw;
+                top: 20vh;
+                right: 10px;
+                border-radius: 100px 0px 0px 10px;
+                z-index: 1001;
+            } 
+            #anotherbook {
+                position: fixed;
+                color: fuchsia;
+                background-color: yellowgreen;
+                opacity: 1;
+                text-shadow: -1px 1px 1px white;
+                border-bottom: 20px solid black;
+                width: 80vw;
+                left: 10px;
+                top: 20px;
+                font-size: 30px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                text-align: left;
+                z-index: 1000;
+            }
+            #goldfish {
+                position: relative;
+                top: 0px;
+                right: 0vw;
+                height: 150vh;
+                opacity: 1;
+                border-radius: 50px 15px 5px 30px;
+                transition: opacity 1s ease-in
+            }
+            #goldfish:hover {
+                opacity: .6;
+            }
+            #scarcity:link {
+                color: darkblue;
+                text-decoration: none;
+            }
+            #scarcity:visited {
+                color: rebeccapurple;
+                text-decoration: none;
+            }
+            #scarcity:hover {
+                color: aqua;
+                text-decoration: underline;
+                letter-spacing: 5px;
+            }
+            .song {
+                color: hotpink;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                }
+            #redd {
+                color: crimson;
+            }
+            #tidy {
+                color: springgreen;
+            }
+            #rid {
+                color: gold;
+            }
+        </style>
+        <title>
+            Existentialist Café
+        </title>
+        <link rel="shortcut icon" href="lip.png"/>
+    </head>
+    <body>
+        <div id="bookthaiamgonnaread"><span id="atec"><b>At the Existentialist Café:</b></span> Freedom, Being, and Apricot Cocktails <!--[Sarah Bakewell]--> </div>
+        <img id="sunlight" src="sunlight.png">
+        <img id="tree" src="trees.png">
+        <img id="goldfish" src="goldfish.png"/>
+        <video controls id="donutdynamite" src="donutdynamite.mp4"></video>
+        <div id="anotherbook"><b>At the Esistentialist Café: Freedom, Being, and Apricot Cocktails</b> is a book that I really want to read. But I cannot start reading it now because I haven't finish <a id="scarcity" href="web2/scarcity.html"><b>this book</b></a> that I'm currently reading.</div>
+        <div class="song" id="title">Water Color</div>
+        <div id="favorite" class="song">Butterfly</div>
+        <div class="song" id="album"><span id="redd">Redd:</span> Wheein stated that the meaning of the album is "<span id="tidy">'to tidy up'</span> and <span id="rid">'to get rid of,'</span> <br/> meaning to get out of false tastes and paint...honest colors.</div>
+    </body>
+</html>
+    
