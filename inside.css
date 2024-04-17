@@ -384,7 +384,7 @@ body {
     cursor: help;
     width: 570px;
     top: 21vh;
-    left: 31.5vw;
+    left: 31vw;
     mix-blend-mode: color-burn;
     animation: floatAnimation 2s infinite ease-in-out;
     transform-origin: center;
