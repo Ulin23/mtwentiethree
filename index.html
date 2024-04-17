@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Existentialist Café</title>
+    <link rel="shortcut icon" href="WebsiteLogo.png"/>
+</head>
+
+<body>
+    <audio autoplay>
+        <source src="laugedybet.wav" type="audio/wav">
+        Your browser does not support the audio element.
+      </audio>
+
+    <div id="cursor-spotlight"></div>
+
+    <div class="container" id="container">
+        <div id="particles"></div>
+        <div id="mirror"></div>
+        <div id="background"></div>
+    </div>
+
+    <div class="heading">
+        <h1 class="title">Welcome to the Existentialist Café!</h1>
+        <h4 class="subtitle"> Having been "thrown" into the world,<br/>we constantly create and recreate our own essence as our lives unfold...</h4>
+    </div>
+
+    <div class="square-container" id="square-container"></div>
+
+    <div class="reflection">
+        <div class="interactive-text">
+            <div id="time">What Time Is It Now?</div>
+            <div id="location"><h4>- ! & Here I Am! -</h4></div>
+            <div id="start"><h5>Inside the Café,<br/>our existence always precedes<br/>our <span id="essence" onclick="scrollToBottom()">essence.</span></h5></div>
+        </div>
+        <div class="collage-art">
+            <img id="open-book" src="openbook.png">
+            <img id="broken-chain" src="brokenchain.png">
+            <img id="cafe-de-flore" src="cafedeflore.png">
+            <img id="eiffle-tower" src="eiffletower.png">
+            <img id="sunlight" src="sunlight.png">
+            <img id="tree-and-sunlight" src="treeandsunlight.png">
+            <img id="walkingman-1" src="walkingman.png">
+            <img id="walkingman-2" src="walkingman.png">
+            <img id="wall-clock" src="wallclock.gif">
+            <img id="cloud" src="cloud.gif">
+            <img id="earth-rotate" src="earthrotate.gif">
+            <img id="location-pin" src="locationpin.gif">
+        </div>
+        <div class="mirrored-collage-art">
+            <img id="mirrored-open-book" src="openbook.png">
+            <img id="mirrored-broken-chain" src="brokenchain.png">
+            <img id="mirrored-cafe-de-flore" src="cafedeflore.png">
+            <img id="mirrored-eiffle-tower" src="eiffletower.png">
+            <img id="mirrored-sunlight" src="sunlight.png">
+            <img id="mirrored-tree-and-sunlight" src="treeandsunlight.png">
+            <img id="mirrored-walkingman-1" src="walkingman.png">
+            <img id="mirrored-walkingman-2" src="walkingman.png">
+            <img id="mirrored-wall-clock" src="wallclock.gif">
+            <img id="mirrored-cloud" src="cloud.gif">
+            <img id="mirrored-earth-rotate" src="earthrotate.gif">
+            <img id="mirrored-location-pin" src="locationpin.gif">
+        </div>
+        <div class="circle" id="circle">
+            <img id="circletravel" src="circletravel.gif">
+            <div id="who-am-i" onmouseover="showWhatDoIDo()" onmouseout="hideWhatDoIDo()">Who Am I?</div>
+            <div id="starting-point" onclick="showVideo()">What Do I Do?</div>
+        </div>
+    </div>
+
+    <video id="video" autoplay loop muted onclick="goToAnotherPage()">
+        <source src="timetravel.mp4" type="video/mp4">
+        Loading...
+    </video>
+
+    <script src="particles.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

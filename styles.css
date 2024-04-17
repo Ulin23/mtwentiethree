@@ -1,0 +1,454 @@
+body {
+    cursor: help;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#cursor-spotlight {
+    position: fixed;
+    width: 30vw;
+    height: 30vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 80%, rgba(255, 255, 255, 0.9) 100%);
+    mix-blend-mode: hard-light;   
+    pointer-events: auto;
+    transform: translate(-50%, -50%);
+    z-index: 11;
+}
+
+
+.container {
+    width: 120vw;
+    height: 0px;
+    z-index: 10;
+}
+
+#particles {
+    position: fixed;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 12;
+}
+
+#mirror {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1600px;
+    height: 2300px;
+    background: linear-gradient(to bottom right, rgba(113,206,217,0.6), rgba(73,107,115,0.8), rgba(21,30,38,1));
+    opacity: 1;
+    z-index: 2;
+}
+
+#background {
+    position: absolute;
+    width: 1600px;
+    left: 0;
+    height: 2280px;
+    top: 0;
+    background-color: whitesmoke;
+    z-index: 0;
+}
+
+
+.title {
+    position: fixed;
+    cursor: pointer;
+    top: 0;
+    left: 18px;
+    color: #151E26;
+    text-align: center;
+    opacity: .8;
+    mix-blend-mode: hard-light;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s;
+    z-index: 15;
+}
+
+.title:hover {
+    mix-blend-mode: exclusion;
+}
+
+.title.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.subtitle {
+    position: fixed;
+    top: 57px;
+    left: 12px;
+    color: #F2594B;
+    text-align: center;
+    opacity: 0;
+    mix-blend-mode: multiply;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s;
+    z-index: 15;
+}
+
+.subtitle.active {
+    opacity: .9;
+    transform: translateY(0);
+}
+
+.square-container {
+    position: relative;
+    mix-blend-mode: hard-light;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+}
+
+.square {
+    position: relative;
+    box-shadow: 2px 2px 2px white;
+    background-color: #71CED9;
+}
+
+.reflection {
+    margin: 0;
+    padding: 0;
+    z-index: 12;
+}
+
+.interactive-text {
+    z-index: 13;
+}
+
+.collage-art {
+    position: absolute;
+    left: 10%;
+    right: 20%;
+    height: auto;
+    top: 150px;
+    z-index: 10;
+}
+
+.collage-art img {
+    position: absolute;
+    height: auto;
+}
+
+#open-book {
+    top: 300px;
+    left: 100px;
+    width: 1030px;
+    z-index: 8;
+}
+
+#broken-chain {
+    top: 343px;
+    left: 863px;
+    width: 333px;
+    z-index: 10;
+}
+
+#cafe-de-flore {
+    top: 50px;
+    left: 600px;
+    width: 595px;
+    z-index: 7;
+}
+
+#eiffle-tower {
+    top: -70px;
+    left: 500px;
+    width: 560px;
+    z-index: 15;
+}
+
+#start {
+    position: absolute;
+    top: 380px;
+    left: 1000px;
+    width: 480px;
+    color: #151E26;
+    font-size: 28px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #71CED9;
+    padding-left: 10px;
+    border-left: 30px solid #F2594B;
+    mix-blend-mode: hard-light;
+    z-index: 14;
+}
+
+#essence {
+    cursor: pointer;
+    color: gold;
+    font-size: 32px;
+    text-shadow: 1px 1px 1px #151E26;
+    transition: font-size 1s ease-in-out;
+}
+
+#essence:hover {
+    font-size: 110px;
+    color: #F2594B;
+}
+
+#sunlight {
+    top: 72px;
+    left: 595px;
+    width: 600px;
+    transform: scaleX(-1);
+    z-index: 8;
+}
+
+#tree-and-sunlight {
+    top: -20px;
+    left: 60px;
+    width: 646px;
+    z-index: 12;
+}
+
+#walkingman-1 {
+    top: 195px;
+    left: 310px;
+    width: 250px;
+    z-index: 13;
+}
+
+#walkingman-2 {
+    top: 80px;
+    left: 220px;
+    width: 320px;
+    transform: scaleX(-1);
+    z-index: 11;
+}
+
+#wall-clock {
+    top: 270px;
+    left: 460px;
+    width: 340px;
+    z-index: 15;
+}
+
+#time {
+    position: absolute;
+    cursor: pointer;
+    top: 630px;
+    left: 70px;
+    width: 640px;
+    color: #F2594B;
+    font-size: 40px;
+    text-align: right;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: whitesmoke;
+    padding: 6px;
+    border-right: 23px solid #496B73;
+    z-index: 23;
+    mix-blend-mode: hard-light;
+}
+
+#cloud {
+    top: -60px;
+    left: 380px;
+    width: 800px;
+    z-index: 16;
+}
+
+#earth-rotate {
+    top: 0px;
+    left: 0px;
+    width: 570px;
+    z-index: 6;
+}
+
+#location-pin {
+    top: -10px;
+    left: 250px;
+    width: 65px;
+    mix-blend-mode: multiply;
+    z-index: 7;
+}
+
+#location {
+    position: absolute;
+    cursor: pointer;
+    top: 194px;
+    left: 22vw;
+    font-size: 19px;
+    color: gold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-shadow: 1.2px 2.3px 1px #151E26;
+    text-align: center;
+    z-index: 15;
+}
+
+.mirrored-collage-art {
+    position: absolute;
+    left: 10vw;
+    right: 10vw;
+    width: 80vw;
+    height: 100vh;
+    top:1000px;
+    transform: scaleY(-1);
+    z-index: 1;
+}
+
+.mirrored-collage-art img {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    height: auto;
+}
+
+#mirrored-open-book {
+    bottom: -343px;
+    left: 100px;
+    width: 1030px;
+    z-index: 8;
+}
+
+#mirrored-broken-chain {
+    bottom: -72px;
+    left: 863px;
+    width: 333px;
+    z-index: 10;
+}
+
+#mirrored-cafe-de-flore {
+    bottom: -230px;
+    left: 600px;
+    width: 595px;
+    z-index: 7;
+}
+
+#mirrored-eiffle-tower {
+    bottom: -75px;
+    left: 500px;
+    width: 560px;
+    z-index: 10;
+}
+
+#mirrored-sunlight {
+    bottom: -257px;
+    left: 595px;
+    width: 600px;
+    transform: scaleX(-1);
+    z-index: 8;
+}
+
+#mirrored-tree-and-sunlight {
+    bottom: -210px;
+    left: 60px;
+    width: 646px;
+    z-index: 12;
+}
+
+#mirrored-walkingman-1 {
+    bottom: -110px;
+    left: 310px;
+    width: 250px;
+    z-index: 13;
+}
+
+#mirrored-walkingman-2 {
+    bottom: -95px;
+    left: 220px;
+    width: 320px;
+    transform: scaleX(-1);
+    z-index: 11;
+}
+
+#mirrored-wall-clock {
+    bottom: -195px;
+    left: 460px;
+    width: 340px;
+    z-index: 13;
+}
+
+#mirrored-cloud {
+    bottom: 140px;
+    left: 380px;
+    width: 800px;
+    z-index: 11;
+}
+
+#mirrored-earth-rotate {
+    bottom: -145px;
+    left: 0px;
+    width: 570px;
+    z-index: 6;
+}
+
+#mirrored-location-pin {
+    bottom: 370px;
+    left: 250px;
+    width: 65px;
+    mix-blend-mode: multiply;
+    z-index: 7;
+}
+
+#circle {
+    position: absolute;
+    left:480px;
+    width: 600px;
+    top: 1540px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgb(200, 255, 255, .99) 10%, #8FFFFF 40%, #71CED9 90%);
+    box-shadow: 0 0 120px rgb(175, 245, 255, .64);
+    animation: floatAnimation 2s infinite ease-in-out;
+    mix-blend-mode: screen;
+    opacity: 1;
+    z-index: 20;
+}
+
+#circletravel {
+    position: absolute;
+    left:-33px;
+    width: 666px;
+    top: -33px;
+    z-index: 21;
+}
+
+#who-am-i {
+    position: absolute;
+    display: block;
+    left: 155px;
+    top: 275px;
+    text-shadow: 2px 3px 4px #C7E9FF;
+    color: black;
+    font-size: 54px;
+    font-family: 'Courier New', Courier, monospace;
+    opacity: 0;
+    background-color: transparent;
+    z-index: 22;
+}
+
+#starting-point {
+    position: absolute;
+    cursor: pointer;
+    display: none;
+    left: 110px;
+    top: 280px;
+    text-shadow: 2px 3px 4px #C7E9FF;
+    color: black;
+    font-size: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: transparent;
+    z-index: 22;
+}
+
+@keyframes floatAnimation {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px); /* Adjust the floating height as needed */
+    }
+}
+
+#video {
+    position: fixed;
+    display: none;
+    top: -10px;
+    left: 0px;
+    width: 100vw;
+    height: auto;
+    z-index: 23;
+}
