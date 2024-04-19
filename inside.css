@@ -105,7 +105,7 @@ body {
     font-size: 16px;
     font-weight: bolder;
     left: 15vw;
-    top: 45vh;
+    top: 44vh;
     text-shadow: 0.3px 0.4px 0.5px #F26A4B;
     animation: floatAnimation 2s infinite ease-in-out;
     opacity: .8;
@@ -384,7 +384,7 @@ body {
     cursor: help;
     width: 570px;
     top: 21vh;
-    left: 31vw;
+    left: 32vw;
     mix-blend-mode: color-burn;
     animation: floatAnimation 2s infinite ease-in-out;
     transform-origin: center;
@@ -428,7 +428,7 @@ button:hover {
 .existentialists img {
     padding: 10px 20px;
     margin: 10px;
-    top: 16vh;
+    top: 14vh;
     cursor: pointer;
     border-radius: 46px;
     font-weight: bold;
