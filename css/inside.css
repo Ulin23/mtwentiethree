@@ -1,0 +1,471 @@
+/* ==========================================================================
+   Existentialist Café — interior page
+   Same approach as styles.css: clamp() so text and panels shrink gracefully
+   instead of overflowing on small screens, vw/vh for position (kept from the
+   original since that part already scaled reasonably).
+   ========================================================================== */
+
+:root {
+    --teal: #71CED9;
+    --teal-dark: #496B73;
+    --ink: #151E26;
+    --coral: #F26A4B;
+    --whitesmoke: whitesmoke;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    transition: background-color 1s ease;
+    background-color: var(--teal);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+#background {
+    position: fixed;
+    inset: 0;
+    background-color: var(--teal);
+    z-index: 0;
+}
+
+#cursor-spotlight {
+    position: fixed;
+    width: clamp(140px, 18vw, 230px);
+    height: clamp(140px, 18vw, 230px);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 80%, rgba(255, 255, 255, 0.9) 100%);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+}
+
+#particles {
+    position: fixed;
+    inset: 0;
+    z-index: 3;
+}
+
+#container {
+    display: block;
+    transition: all 0.3s ease-in-out;
+}
+
+#mirror {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(to bottom right, rgba(21, 30, 38, 1), rgba(73, 107, 115, 0.8), rgba(113, 206, 217, 0.6));
+    opacity: .6;
+    z-index: -3;
+}
+
+/* ---- countdown ---- */
+#timer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(2.5rem, 12vw, 7rem);
+    font-weight: bold;
+    text-align: center;
+    color: var(--whitesmoke);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 50, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    mix-blend-mode: overlay;
+}
+
+/* ---- "Me, Myself, and I" ---- */
+#user-identity {
+    position: fixed;
+    top: 3vw;
+    left: 15vw;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bolder;
+    background-color: var(--teal-dark);
+    color: #fff;
+    font-size: clamp(2rem, 6vw, 6rem);
+    padding: 10px;
+    border-radius: 15px 0 10px 5px;
+    transition: all 0.3s ease-in-out;
+    cursor: help;
+    z-index: 10;
+}
+
+/* ---- book excerpts / reflection summary ---- */
+#book-excerpts {
+    position: fixed;
+    z-index: 7;
+    width: clamp(260px, 42vw, 640px);
+    font-size: clamp(0.8rem, 1.6vw, 1rem);
+    font-weight: bolder;
+    left: 15vw;
+    top: 44vh;
+    text-shadow: 0.3px 0.4px 0.5px var(--coral);
+    animation: floatAnimation 2s infinite ease-in-out;
+    opacity: .8;
+}
+
+#summarization {
+    position: fixed;
+    z-index: 8;
+    width: clamp(220px, 34vw, 500px);
+    font-size: clamp(1.3rem, 3vw, 2.1rem);
+    font-weight: bold;
+    text-align: right;
+    left: 57vw;
+    top: 50vh;
+    color: var(--ink);
+    mix-blend-mode: multiply;
+    animation: floatAnimation 2s infinite ease-in-out;
+}
+
+#summary-background {
+    position: fixed;
+    z-index: 7;
+    width: clamp(160px, 26vw, 400px);
+    height: clamp(160px, 26vw, 400px);
+    left: 57vw;
+    top: 48vh;
+    background-color: var(--coral);
+    mix-blend-mode: hard-light;
+    transition: all 1s ease-in-out;
+}
+
+#summary-background:hover {
+    width: clamp(120px, 15vw, 230px);
+    height: clamp(300px, 60vh, 640px);
+    top: 8vh;
+}
+
+.interactive-section {
+    cursor: pointer;
+    border-bottom: 1px dashed #3498db;
+    width: clamp(260px, 42vw, 640px);
+    transition: all 0.3s ease-in-out;
+    filter: url(#moire);
+}
+
+.interactive-section:hover {
+    background-color: white;
+    width: clamp(280px, 80vw, 1180px);
+}
+
+@keyframes floatAnimation {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* ---- "define yourself" button + modal ---- */
+#reflection-button {
+    position: fixed;
+    z-index: 5;
+    width: clamp(120px, 12vw, 140px);
+    top: 35vw;
+    left: 5.6vw;
+    background-color: var(--coral);
+    color: #fff;
+    padding: 10px 20px;
+    font-size: clamp(1.3rem, 3vw, 2.1rem);
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    text-shadow: 1px 2px 1px var(--ink);
+    border-right: 12px dashed var(--teal-dark);
+    transition: all 0.23s ease-in-out;
+    cursor: pointer;
+}
+
+#reflection-button:hover {
+    background-color: var(--teal);
+    font-size: clamp(1.6rem, 3.6vw, 2.6rem);
+    width: clamp(150px, 14vw, 180px);
+    color: var(--coral);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    inset: 0;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: min(80%, 480px);
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* ---- moiré decoration ---- */
+.moire-container1 {
+    position: fixed;
+    top: 0;
+    width: clamp(160px, 20vw, 320px);
+    height: clamp(160px, 20vw, 320px);
+    background: repeating-linear-gradient(46deg, white, white 5px, var(--teal) 5px, var(--teal) 10px);
+    mix-blend-mode: multiply;
+    animation: rotateAnimation 6s reverse infinite ease-in-out;
+    z-index: 6;
+}
+
+#go-back {
+    cursor: pointer;
+    padding: 3px;
+    color: var(--ink);
+    font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+    text-shadow: 6px 4px 0px white;
+    width: 50px;
+}
+
+#go-back:hover {
+    color: var(--coral);
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    width: clamp(80px, 10vw, 110px);
+}
+
+#popup {
+    position: fixed;
+    width: clamp(260px, 32vw, 400px);
+    left: 50%;
+    top: 6.25vw;
+    transform: translateX(-50%);
+    background-color: #ecf0f1;
+    border-radius: 5px;
+    padding: 12px;
+    text-align: center;
+    z-index: 23;
+}
+
+#popup-message {
+    margin: 0 0 10px;
+}
+
+.moire-container2 {
+    position: fixed;
+    top: 16.25vw;
+    width: clamp(120px, 18vw, 230px);
+    height: clamp(120px, 18vw, 230px);
+    border-radius: 50%;
+    background: repeating-linear-gradient(90deg, white, white 5px, var(--coral) 5px, var(--coral) 10px);
+    mix-blend-mode: multiply;
+    animation: rotateAnimation 4s linear infinite;
+    z-index: 4;
+}
+
+.moire-container3 {
+    position: fixed;
+    inset: 0;
+    background:
+        linear-gradient(60deg, #f0f0f0 25%, transparent 25%, transparent 75%, #f0f0f0 75%, #f0f0f0),
+        linear-gradient(-60deg, #f0f0f0 25%, transparent 25%, transparent 75%, #f0f0f0 75%, #f0f0f0);
+    background-size: 23px 34px;
+    mix-blend-mode: soft-light;
+    animation: rotateAnimation 6s alternate infinite ease-in-out;
+    z-index: 5;
+}
+
+@keyframes rotateAnimation {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ---- background video / ending sequence ---- */
+#video-background {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    mix-blend-mode: soft-light;
+    opacity: .5;
+    z-index: -1;
+}
+
+#finish-video {
+    position: fixed;
+    display: none;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+
+#half-earth {
+    position: fixed;
+    display: none;
+    width: 100vw;
+    height: auto;
+    left: 0;
+    bottom: 0;
+    object-fit: cover;
+    z-index: 5;
+}
+
+#end {
+    position: fixed;
+    display: none;
+    transition: transform 0.3s ease-in-out;
+    z-index: 4;
+}
+
+#end:hover {
+    transform: translateY(-100px);
+}
+
+#finish {
+    position: fixed;
+    display: block;
+    top: 36vh;
+    left: 47vw;
+    width: clamp(220px, 32vw, 500px);
+    padding: 10px;
+    font-size: clamp(2.2rem, 6vw, 5rem);
+    font-weight: bolder;
+    border: 0;
+    border-radius: 5px;
+    background: transparent;
+    color: var(--whitesmoke);
+    text-shadow: 0px 0px 6px var(--teal);
+    mix-blend-mode: color-burn;
+    animation: floatAnimation 2s infinite ease-in-out;
+    cursor: pointer;
+    z-index: 10;
+}
+
+#black-hole {
+    position: fixed;
+    display: none;
+    cursor: help;
+    width: clamp(240px, 36vw, 570px);
+    top: 21vh;
+    left: 32vw;
+    mix-blend-mode: color-burn;
+    animation: floatAnimation 2s infinite ease-in-out;
+    transition: all 5s ease-in-out;
+    z-index: 10;
+}
+
+#black-hole:hover {
+    top: 9vh;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: var(--teal);
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+button:hover {
+    background-color: aqua;
+}
+
+/* ---- existentialist portraits row ---- */
+.existentialists {
+    position: fixed;
+    top: 14vh;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(8px, 2vw, 20px);
+    padding: 0 2vw;
+    z-index: 9;
+}
+
+.existentialists img {
+    position: relative;
+    width: clamp(90px, 14vw, 230px);
+    height: auto;
+    padding: 6px 10px;
+    margin: 0;
+    cursor: pointer;
+    border-radius: 46px;
+}
+
+.existentialists img:hover {
+    transform: scale(1.15);
+}
+
+#font-image,
+#size-image {
+    mix-blend-mode: normal;
+}
+
+#color-image,
+#blend-mode-image,
+#shadow-image {
+    mix-blend-mode: hard-light;
+}
+
+#background-image {
+    border: 2px solid var(--coral);
+}
+
+#radius-image {
+    border: 2px solid var(--teal);
+}
+
+/* ---- small screens: keep floating panels legible ---- */
+@media (max-width: 700px) {
+    #book-excerpts,
+    #summarization,
+    #summary-background {
+        position: static;
+        width: 90vw;
+        margin: 12px auto;
+    }
+
+    #summary-background {
+        display: none;
+    }
+
+    #user-identity {
+        font-size: clamp(1.5rem, 8vw, 3rem);
+        left: 4vw;
+        top: 2vw;
+    }
+
+    .moire-container1,
+    .moire-container2,
+    .moire-container3 {
+        display: none;
+    }
+
+    #reflection-button {
+        top: auto;
+        bottom: 4vh;
+        left: 4vw;
+    }
+}

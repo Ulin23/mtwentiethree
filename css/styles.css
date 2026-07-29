@@ -1,0 +1,331 @@
+/* ==========================================================================
+   Existentialist Café — landing page
+   Layout approach: instead of pixel-locked absolute positions (which only
+   looked right at one screen size), every element scales from vw units or
+   percentages of its own container. The collage images share position
+   classes (.art-*) between the normal and mirrored sets, so there is one
+   rule per image instead of two.
+   ========================================================================== */
+
+:root {
+    --teal: #71CED9;
+    --teal-dark: #496B73;
+    --ink: #151E26;
+    --coral: #F26A4B;
+    --whitesmoke: whitesmoke;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    cursor: help;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--ink);
+    overflow-x: hidden;
+}
+
+/* ---- cursor spotlight ---- */
+#cursor-spotlight {
+    position: fixed;
+    width: clamp(160px, 30vw, 420px);
+    height: clamp(160px, 30vw, 420px);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 80%, rgba(255, 255, 255, 0.9) 100%);
+    mix-blend-mode: hard-light;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 11;
+}
+
+/* ---- background layers ---- */
+.container {
+    position: relative;
+    width: 100%;
+    z-index: 10;
+}
+
+#particles {
+    position: fixed;
+    inset: 0;
+    z-index: 12;
+}
+
+#mirror {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom right, rgba(113, 206, 217, 0.6), rgba(73, 107, 115, 0.8), rgba(21, 30, 38, 1));
+    z-index: 2;
+    pointer-events: none;
+}
+
+#background {
+    position: absolute;
+    inset: 0;
+    background-color: var(--whitesmoke);
+    z-index: 0;
+}
+
+/* ---- title / subtitle ---- */
+.heading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: clamp(8px, 1.5vw, 18px);
+    z-index: 15;
+}
+
+.title {
+    margin: 0;
+    cursor: pointer;
+    color: var(--teal-dark);
+    font-size: clamp(1.1rem, 3vw, 2rem);
+    opacity: .8;
+    mix-blend-mode: multiply;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.title:hover {
+    color: var(--ink);
+}
+
+.title.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.subtitle {
+    margin: 6px 0 0;
+    color: var(--teal);
+    mix-blend-mode: multiply;
+    font-size: clamp(0.75rem, 1.6vw, 1.1rem);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.subtitle.active {
+    opacity: .9;
+    transform: translateY(0);
+}
+
+/* ---- floating squares ---- */
+.square-container {
+    position: relative;
+    mix-blend-mode: hard-light;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+}
+
+.square {
+    position: absolute;
+    box-shadow: 2px 2px 2px white;
+    background-color: var(--teal);
+}
+
+/* ---- interactive text block ---- */
+.reflection {
+    position: relative;
+    z-index: 12;
+    padding: 6vw 5vw 0;
+}
+
+.interactive-text {
+    position: relative;
+    z-index: 13;
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(12px, 2vw, 24px);
+    justify-content: center;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+#time {
+    cursor: pointer;
+    color: var(--coral);
+    font-size: clamp(1.1rem, 2.4vw, 1.8rem);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: var(--whitesmoke);
+    padding: 6px 14px;
+    border-right: 10px solid var(--teal-dark);
+    mix-blend-mode: hard-light;
+    transition: font-size 0.3s ease-in-out;
+}
+
+#time:hover {
+    font-size: clamp(1.3rem, 3vw, 2.2rem);
+}
+
+#location {
+    cursor: pointer;
+    color: var(--whitesmoke);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: clamp(0.95rem, 1.8vw, 1.3rem);
+    text-shadow: 1px 4px 2px var(--ink);
+    mix-blend-mode: hard-light;
+    transition: all .3s ease-in-out;
+}
+
+#location:hover {
+    color: var(--coral);
+}
+
+#start {
+    max-width: 480px;
+    color: var(--ink);
+    font-size: clamp(1rem, 2.2vw, 1.5rem);
+    background-color: var(--teal);
+    padding: 10px 14px;
+    border-left: 16px solid var(--whitesmoke);
+    mix-blend-mode: hard-light;
+}
+
+#essence {
+    cursor: pointer;
+    color: gold;
+    text-shadow: 1px 1px 1px var(--ink);
+    transition: font-size 0.5s ease-in-out;
+    display: inline-block;
+}
+
+#essence:hover {
+    font-size: 1.8em;
+    color: var(--coral);
+}
+
+/* ---- collage stage ----
+   Each image keeps its position as a percentage of the collage box, so the
+   whole composition scales as one piece instead of breaking apart. */
+.stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(24px, 5vw, 60px);
+    padding: clamp(24px, 6vw, 80px) 0;
+}
+
+.collage-art {
+    position: relative;
+    width: min(92vw, 1100px);
+    aspect-ratio: 1200 / 650;
+}
+
+.collage-art--mirror {
+    transform: scaleY(-1);
+    opacity: .55;
+}
+
+.art {
+    position: absolute;
+    height: auto;
+}
+
+.art-mirrored-x {
+    transform: scaleX(-1);
+}
+
+.art-open-book     { top: 42.9%; left: 8.3%;  width: 85.8%; z-index: 8; }
+.art-broken-chain  { top: 49%;   left: 71.9%; width: 27.8%; z-index: 10; }
+.art-cafe-de-flore { top: 7.1%;  left: 50%;   width: 49.6%; z-index: 7; }
+.art-eiffle-tower  { top: -10%;  left: 41.7%; width: 46.7%; z-index: 15; }
+.art-sunlight       { top: 10.3%; left: 49.6%; width: 50%;   z-index: 8; transform: scaleX(-1); }
+.art-tree-and-sunlight { top: -2.9%; left: 5%; width: 53.8%; z-index: 12; }
+.art-walkingman-1  { top: 27.9%; left: 25.8%; width: 20.8%; z-index: 13; }
+.art-walkingman-2  { top: 11.4%; left: 18.3%; width: 26.7%; z-index: 11; }
+.art-wall-clock    { top: 38.6%; left: 38.3%; width: 28.3%; z-index: 15; }
+.art-cloud         { top: -8.6%; left: 31.7%; width: 66.7%; z-index: 16; }
+.art-earth-rotate  { top: 0%;    left: 0%;    width: 47.5%; z-index: 6; }
+.art-location-pin  { top: -1.4%; left: 20.8%; width: 5.4%;  mix-blend-mode: multiply; z-index: 7; }
+
+/* ---- "who am I" circle ---- */
+.circle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(220px, 34vw, 480px);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgb(200, 255, 255, .99) 10%, #8FFFFF 40%, var(--teal) 90%);
+    box-shadow: 0 0 clamp(40px, 8vw, 120px) rgba(175, 245, 255, .64);
+    animation: floatAnimation 2s infinite ease-in-out;
+    mix-blend-mode: screen;
+}
+
+#circletravel {
+    position: absolute;
+    inset: -5.5%;
+    width: 111%;
+    z-index: 1;
+}
+
+#who-am-i,
+#starting-point {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(1.1rem, 3.4vw, 2.4rem);
+    text-align: center;
+    z-index: 2;
+}
+
+#who-am-i {
+    color: black;
+    text-shadow: 2px 3px 4px #C7E9FF;
+}
+
+#starting-point {
+    display: none;
+    color: var(--whitesmoke);
+    text-shadow: 2px 3px 4px var(--teal);
+}
+
+@keyframes floatAnimation {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* ---- time-travel transition video ---- */
+#video {
+    position: fixed;
+    inset: 0;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 23;
+    cursor: pointer;
+}
+
+/* ---- small screens: simplify the collage so nothing gets crushed ---- */
+@media (max-width: 640px) {
+    .collage-art--mirror {
+        display: none;
+    }
+
+    .interactive-text {
+        gap: 12px;
+    }
+
+    #start {
+        border-left-width: 8px;
+    }
+}

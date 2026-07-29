@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Existentialist Café</title>
-    <link rel="shortcut icon" href="WebsiteLogo.png"/>
+    <link rel="shortcut icon" href="assets/img/WebsiteLogo.png" />
 </head>
 
 <body>
     <audio autoplay>
-        <source src="laugedybet.wav" type="audio/wav">
+        <source src="assets/audio/laugedybet.wav" type="audio/wav">
         Your browser does not support the audio element.
-      </audio>
+    </audio>
 
     <div id="cursor-spotlight"></div>
 
@@ -25,7 +25,7 @@
 
     <div class="heading">
         <h1 class="title">Welcome to the Existentialist Café!</h1>
-        <h4 class="subtitle"> Having been "thrown" into the world,<br/>we constantly create and recreate our own essence as our lives unfold...</h4>
+        <h4 class="subtitle">Having been "thrown" into the world,<br />we constantly create and recreate our own essence as our lives unfold...</h4>
     </div>
 
     <div class="square-container" id="square-container"></div>
@@ -34,49 +34,55 @@
         <div class="interactive-text">
             <div id="time">What Time Is It Now?</div>
             <div id="location"><h4>- ! & Here I Am! -</h4></div>
-            <div id="start"><h5>Inside the Café,<br/>our existence always precedes<br/>our <span id="essence" onclick="scrollToBottom()">essence.</span></h5></div>
+            <div id="start"><h5>Inside the Café,<br />our existence always precedes<br />our <span id="essence">essence.</span></h5></div>
         </div>
-        <div class="collage-art">
-            <img id="open-book" src="openbook.png">
-            <img id="broken-chain" src="brokenchain.png">
-            <img id="cafe-de-flore" src="cafedeflore.png">
-            <img id="eiffle-tower" src="eiffletower.png">
-            <img id="sunlight" src="sunlight.png">
-            <img id="tree-and-sunlight" src="treeandsunlight.png">
-            <img id="walkingman-1" src="walkingman.png">
-            <img id="walkingman-2" src="walkingman.png">
-            <img id="wall-clock" src="wallclock.gif">
-            <img id="cloud" src="cloud.gif">
-            <img id="earth-rotate" src="earthrotate.gif">
-            <img id="location-pin" src="locationpin.gif">
-        </div>
-        <div class="mirrored-collage-art">
-            <img id="mirrored-open-book" src="openbook.png">
-            <img id="mirrored-broken-chain" src="brokenchain.png">
-            <img id="mirrored-cafe-de-flore" src="cafedeflore.png">
-            <img id="mirrored-eiffle-tower" src="eiffletower.png">
-            <img id="mirrored-sunlight" src="sunlight.png">
-            <img id="mirrored-tree-and-sunlight" src="treeandsunlight.png">
-            <img id="mirrored-walkingman-1" src="walkingman.png">
-            <img id="mirrored-walkingman-2" src="walkingman.png">
-            <img id="mirrored-wall-clock" src="wallclock.gif">
-            <img id="mirrored-cloud" src="cloud.gif">
-            <img id="mirrored-earth-rotate" src="earthrotate.gif">
-            <img id="mirrored-location-pin" src="locationpin.gif">
-        </div>
-        <div class="circle" id="circle">
-            <img id="circletravel" src="circletravel.gif">
-            <div id="who-am-i" onmouseover="showWhatDoIDo()" onmouseout="hideWhatDoIDo()">Who Am I?</div>
-            <div id="starting-point" onclick="showVideo()">What Do I Do?</div>
+
+        <div class="stage">
+            <div class="collage-art" aria-hidden="true">
+                <img class="art art-open-book" src="assets/img/openbook.png" alt="">
+                <img class="art art-broken-chain" src="assets/img/brokenchain.png" alt="">
+                <img class="art art-cafe-de-flore" src="assets/img/cafedeflore.png" alt="">
+                <img class="art art-eiffle-tower" src="assets/img/eiffletower.png" alt="">
+                <img class="art art-sunlight" src="assets/img/sunlight.png" alt="">
+                <img class="art art-tree-and-sunlight" src="assets/img/treeandsunlight.png" alt="">
+                <img class="art art-walkingman-1" src="assets/img/walkingman.png" alt="">
+                <img class="art art-walkingman-2 art-mirrored-x" src="assets/img/walkingman.png" alt="">
+                <img class="art art-wall-clock" src="assets/gif/wallclock.gif" alt="">
+                <img class="art art-cloud" src="assets/gif/cloud.gif" alt="">
+                <img class="art art-earth-rotate" src="assets/gif/earthrotate.gif" alt="">
+                <img class="art art-location-pin" src="assets/gif/locationpin.gif" alt="">
+            </div>
+
+            <div class="collage-art collage-art--mirror" aria-hidden="true">
+                <img class="art art-open-book" src="assets/img/openbook.png" alt="">
+                <img class="art art-broken-chain" src="assets/img/brokenchain.png" alt="">
+                <img class="art art-cafe-de-flore" src="assets/img/cafedeflore.png" alt="">
+                <img class="art art-eiffle-tower" src="assets/img/eiffletower.png" alt="">
+                <img class="art art-sunlight" src="assets/img/sunlight.png" alt="">
+                <img class="art art-tree-and-sunlight" src="assets/img/treeandsunlight.png" alt="">
+                <img class="art art-walkingman-1" src="assets/img/walkingman.png" alt="">
+                <img class="art art-walkingman-2 art-mirrored-x" src="assets/img/walkingman.png" alt="">
+                <img class="art art-wall-clock" src="assets/gif/wallclock.gif" alt="">
+                <img class="art art-cloud" src="assets/gif/cloud.gif" alt="">
+                <img class="art art-earth-rotate" src="assets/gif/earthrotate.gif" alt="">
+                <img class="art art-location-pin" src="assets/gif/locationpin.gif" alt="">
+            </div>
+
+            <div class="circle" id="circle">
+                <img id="circletravel" src="assets/gif/circletravel.gif" alt="">
+                <button id="who-am-i" type="button">Who Am I?</button>
+                <button id="starting-point" type="button">What Do I Do?</button>
+            </div>
         </div>
     </div>
 
-    <video id="video" autoplay loop muted onclick="goToAnotherPage()">
-        <source src="timetravel.mp4" type="video/mp4">
+    <video id="video" autoplay playsinline muted loop>
+        <source src="assets/video/timetravel.mp4" type="video/mp4">
         Loading...
     </video>
 
-    <script src="particles.min.js"></script>
-    <script src="script.js"></script>
+    <script src="js/particles.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
+
 </html>

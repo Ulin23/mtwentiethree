@@ -5,29 +5,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="inside.css">
+    <link rel="stylesheet" href="css/inside.css">
     <title>Inside the Café</title>
-    <link rel="shortcut icon" href="WebsiteLogo.png"/>
+    <link rel="shortcut icon" href="assets/img/WebsiteLogo.png" />
 </head>
 
 <body>
     <audio autoplay>
-        <source src="existence.wav" type="audio/wav">
+        <source src="assets/audio/existence.wav" type="audio/wav">
         Your browser does not support the audio element.
-      </audio>
+    </audio>
 
     <div id="cursor-spotlight"></div>
 
     <div id="end">
-        <div id="finish" onmouseover="showBlackHole()">?</div>
-        <a href="index.html">
-            <img id="black-hole" src="blackhole.gif" onmouseout="hideBlackHole()" loop>
+        <button id="finish" type="button">?</button>
+        <a href="index.html" aria-label="Return to the start">
+            <img id="black-hole" src="assets/gif/blackhole.gif" alt="A swirling black hole">
         </a>
     </div>
 
-    <img id="half-earth" src="space.gif" loop>
-    <video id="finish-video" muted autoplay loop>
-        <source src="space.mp4" type="video/mp4">
+    <img id="half-earth" src="assets/gif/space.gif" alt="">
+    <video id="finish-video" muted autoplay loop playsinline>
+        <source src="assets/video/space.mp4" type="video/mp4">
     </video>
 
     <div id="particles"></div>
@@ -41,96 +41,81 @@
         </div>
         <div id="summary-background"></div>
         <div id="book-excerpts">
-            <h6 class="interactive-section" onclick="updateSum('AUTHENTICITY IS A CHOICE.');">
-                To choose authenticity is also to choose amorphousness. 
-                When we accept responsibility for the way we invent our own selves, 
-                we must give up the self we have invented. We must kill our gods, 
-                or at least send them to the Sinai of the unconscious. 
+            <h6 class="interactive-section" data-summary="AUTHENTICITY IS A CHOICE.">
+                To choose authenticity is also to choose amorphousness.
+                When we accept responsibility for the way we invent our own selves,
+                we must give up the self we have invented. We must kill our gods,
+                or at least send them to the Sinai of the unconscious.
                 After that, we must trust ourselves without the props and enjoyments of certainty.
             </h6>
-            <h6 class="interactive-section" onclick="updateSum('EXISTENTIALISTS EMBRACE ABSUIRDITY.');">
-                But that was what existentialists were good at: 
+            <h6 class="interactive-section" data-summary="EXISTENTIALISTS EMBRACE ABSURDITY.">
+                But that was what existentialists were good at:
                 picking themselves up from the flat rock of despair and turning it into the springboard for the next big leap into absurdity.
             </h6>
-            <h6 class="interactive-section" onclick="updateSum('THE MOST INVIGORATING THING YOU CAN SAY IS -HELP!-');">
-                Existentialists were, and are, often accused of being too negative. 
-                They reply that optimism and pessimism are a matter of perspective, and that from the viewpoint of the abyss, 
+            <h6 class="interactive-section" data-summary="THE MOST INVIGORATING THING YOU CAN SAY IS 'HELP!'">
+                Existentialists were, and are, often accused of being too negative.
+                They reply that optimism and pessimism are a matter of perspective, and that from the viewpoint of the abyss,
                 the most invigorating thing you can say is 'Help!'
             </h6>
-            <h6 class="interactive-section" onclick="updateSum('INDIVIDUAL RESPONSIBILITY EMPOWERS HOPE AMID DIFFICULTIES.');">
-                Existentialism's insistence on individual responsibility makes it no less difficult, 
-                but it does make it more open to hope. We can always do something. 
-                We can choose how we behave, how we react, what we do next. 
+            <h6 class="interactive-section" data-summary="INDIVIDUAL RESPONSIBILITY EMPOWERS HOPE AMID DIFFICULTIES.">
+                Existentialism's insistence on individual responsibility makes it no less difficult,
+                but it does make it more open to hope. We can always do something.
+                We can choose how we behave, how we react, what we do next.
                 Even when feeling hopeless, people can sometimes be stirred into activity if they see a chance of contributing to a cause.
             </h6>
-            <h6 class="interactive-section" onclick="updateSum('CONSTANT SELF-REFLECTION UNVEILS LIFE PURPOSE.');">
-                Existentialism demands an attitude of constant reflection and self-examination. 
-                It insists that we confront the realities of our existence, question our assumptions, and take responsibility for our choices. 
+            <h6 class="interactive-section" data-summary="CONSTANT SELF-REFLECTION UNVEILS LIFE PURPOSE.">
+                Existentialism demands an attitude of constant reflection and self-examination.
+                It insists that we confront the realities of our existence, question our assumptions, and take responsibility for our choices.
                 In doing so, it invites us to engage in a profound exploration of the meaning and purpose of our own lives.
             </h6>
-            <h6 class="interactive-section" onclick="updateSum('WE QUESTION NORMS THROUGH EXISTENCE.');">
-                Existentialism, at its core, is not just a philosophy; it is a lens through which we can perceive the world with greater clarity. 
-                By acknowledging the uncertainties and absurdities of life, 
-                existentialism prompts us to question societal norms, confront our own biases, and see beyond the surface of things. 
+            <h6 class="interactive-section" data-summary="WE QUESTION NORMS THROUGH EXISTENCE.">
+                Existentialism, at its core, is not just a philosophy; it is a lens through which we can perceive the world with greater clarity.
+                By acknowledging the uncertainties and absurdities of life,
+                existentialism prompts us to question societal norms, confront our own biases, and see beyond the surface of things.
                 It invites us to explore the depths of human experience and understand the world in all its complexity.
             </h6>
-            <h6 class="interactive-section" onclick="updateSum('EXISTENCE SHAPES ESSENCE, DEFYING FIXED MEANINGS.');">
-                The existentialist proposition of existence preceding essence disrupts traditional ontological assumptions, 
-                challenging the inherent teleology in ascribing fixed, predetermined meanings to human existence. 
+            <h6 class="interactive-section" data-summary="EXISTENCE SHAPES ESSENCE, DEFYING FIXED MEANINGS.">
+                The existentialist proposition of existence preceding essence disrupts traditional ontological assumptions,
+                challenging the inherent teleology in ascribing fixed, predetermined meanings to human existence.
                 The rejection of a predetermined essence implies an ongoing process of self-creation, demanding an authentic engagement with the fluidity of existence.
             </h6>
         </div>
 
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="0" height="0">
             <defs>
                 <filter id="moire" x="-20%" y="-20%" width="140%" height="140%">
-                    <feTurbulence type="turbulence" baseFrequency="0.06" numOctaves="4" result="turbulence"/>
-                    <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="23" result="displaced"/>
-        
-                    <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0" result="color"/>
-                    <feComposite in="color" in2="displaced" operator="atop" result="moireEffect"/>
-        
-                    <!-- Create blurred effect for the shadow -->
-                    <feGaussianBlur in="moireEffect" stdDeviation="2" result="blurred"/>
-        
-                    <!-- Flood color and composite it -->
-                    <feFlood flood-color="#151E26" result="flood"/>  <!-- Set your desired shadow color here -->
-                    <feComposite in="flood" in2="blurred" operator="in" result="coloredShadow"/>
-        
-                    <feOffset in="coloredShadow" dx="6" dy="4" result="offsetBlur"/>  <!-- Shadow offset -->
-        
-                    <!-- Merge the original graphic and the shadow -->
+                    <feTurbulence type="turbulence" baseFrequency="0.06" numOctaves="4" result="turbulence" />
+                    <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="23" result="displaced" />
+                    <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0" result="color" />
+                    <feComposite in="color" in2="displaced" operator="atop" result="moireEffect" />
+                    <feGaussianBlur in="moireEffect" stdDeviation="2" result="blurred" />
+                    <feFlood flood-color="#151E26" result="flood" />
+                    <feComposite in="flood" in2="blurred" operator="in" result="coloredShadow" />
+                    <feOffset in="coloredShadow" dx="6" dy="4" result="offsetBlur" />
                     <feMerge>
-                        <feMergeNode in="offsetBlur"/> <!-- Shadow -->
-                        <feMergeNode in="moireEffect"/> <!-- Original -->
+                        <feMergeNode in="offsetBlur" />
+                        <feMergeNode in="moireEffect" />
                     </feMerge>
                 </filter>
             </defs>
         </svg>
-        
-        
-        
-
-        
-        
-        
 
         <div class="existentialists">
-            <img id="font-image" src="sartre.png" alt="Sartre">
-            <img id="size-image" src="beauvoir.png" alt="Beauvoir">
-            <img id="color-image" src="camus.png" alt="Camus">
-            <img id="blend-mode-image" src="heidegger.png" alt="Heidegger">
-            <img id="background-image" src="husserl.png" alt="Husserl">
-            <img id="radius-image" src="jaspers.png" alt="Jaspers">
-            <img id="shadow-image" src="merleauponty.png" alt="Merleau-Ponty">
+            <img id="font-image" src="assets/img/sartre.png" alt="Sartre — click to randomize the font">
+            <img id="size-image" src="assets/img/beauvoir.png" alt="Beauvoir — click to randomize the size">
+            <img id="color-image" src="assets/img/camus.png" alt="Camus — click to randomize the color">
+            <img id="blend-mode-image" src="assets/img/heidegger.png" alt="Heidegger — click to randomize the blend mode">
+            <img id="background-image" src="assets/img/husserl.png" alt="Husserl — click to randomize the background">
+            <img id="radius-image" src="assets/img/jaspers.png" alt="Jaspers — click to randomize the corner radius">
+            <img id="shadow-image" src="assets/img/merleauponty.png" alt="Merleau-Ponty — click to randomize the shadow">
         </div>
 
         <div class="moire-container1">
-            <h4 id="go-back">Go Back<br/>Go Back<br/>Go Back<br/>Go Back<br/>Go Back<br/>Go Back<br/></h4>
+            <h4 id="go-back">Go Back<br />Go Back<br />Go Back<br />Go Back<br />Go Back<br />Go Back<br /></h4>
         </div>
         <div id="popup" style="display: none;">
             <p id="popup-message">Oops! There's no way you can go backward. :)</p>
-            <button onclick="closePopup()">Close</button>
+            <button type="button" onclick="closePopup()">Close</button>
         </div>
         <div class="moire-container2"></div>
         <div class="moire-container3">
@@ -139,21 +124,22 @@
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close" id="closeModal">&times;</span>
-                <p><b>- Existence precedes essence. -</b><br/><br/> It is time to create & recreate your own essence:</p>
+                <p><b>- Existence precedes essence. -</b><br /><br /> It is time to create & recreate your own essence:</p>
                 <input type="text" id="userInputModal" />
-                <button id="submitModal">Submit</button>
+                <button type="button" id="submitModal">Submit</button>
             </div>
         </div>
     </div>
 
-    
-    <div id="user-identity" onmouseover="moveRandomPosition()"></div>
+    <div id="user-identity"></div>
 
-    <video id="video-background" autoplay loop muted>
-        <source src="dynamicdigitalnoise.mp4" type="video/mp4">
+    <video id="video-background" autoplay loop muted playsinline>
+        <source src="assets/video/dynamicdigitalnoise.mp4" type="video/mp4">
+    </video>
     <div id="background"></div>
 
-    <script src="particles.min.js"></script>
-    <script src="inside.js"></script>
+    <script src="js/particles.min.js"></script>
+    <script src="js/inside.js"></script>
 </body>
+
 </html>
