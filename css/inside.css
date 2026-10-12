@@ -1,10 +1,3 @@
-/* ==========================================================================
-   Existentialist Café — interior page
-   Same approach as styles.css: clamp() so text and panels shrink gracefully
-   instead of overflowing on small screens, vw/vh for position (kept from the
-   original since that part already scaled reasonably).
-   ========================================================================== */
-
 :root {
     --teal: #71CED9;
     --teal-dark: #496B73;
@@ -20,7 +13,6 @@
 body {
     margin: 0;
     transition: background-color 1s ease;
-    background-color: var(--teal);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow: hidden;
 }
@@ -28,7 +20,7 @@ body {
 #background {
     position: fixed;
     inset: 0;
-    background-color: var(--teal);
+    background-color: var(--d);
     z-index: 0;
 }
 
@@ -66,18 +58,16 @@ body {
 /* ---- countdown ---- */
 #timer {
     position: fixed;
-    top: 50%;
-    left: 50%;
     transform: translate(-50%, -50%);
-    font-size: clamp(2.5rem, 12vw, 7rem);
+    font-size: clamp(10rem, 80vw, 20rem);
+    left: 50vw;
+    top: 50vh;
     font-weight: bold;
     text-align: center;
     color: var(--whitesmoke);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    background-color: rgba(0, 50, 0, 0.1);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     z-index: 2;
     mix-blend-mode: overlay;
 }
@@ -106,7 +96,7 @@ body {
     width: clamp(260px, 42vw, 640px);
     font-size: clamp(0.8rem, 1.6vw, 1rem);
     font-weight: bolder;
-    left: 15vw;
+    left: 22vw;
     top: 44vh;
     text-shadow: 0.3px 0.4px 0.5px var(--coral);
     animation: floatAnimation 2s infinite ease-in-out;
@@ -133,7 +123,7 @@ body {
     width: clamp(160px, 26vw, 400px);
     height: clamp(160px, 26vw, 400px);
     left: 57vw;
-    top: 48vh;
+    top: 46vh;
     background-color: var(--coral);
     mix-blend-mode: hard-light;
     transition: all 1s ease-in-out;
@@ -142,7 +132,7 @@ body {
 #summary-background:hover {
     width: clamp(120px, 15vw, 230px);
     height: clamp(300px, 60vh, 640px);
-    top: 8vh;
+    top: 75vh;
 }
 
 .interactive-section {
@@ -169,7 +159,7 @@ body {
     z-index: 5;
     width: clamp(120px, 12vw, 140px);
     top: 35vw;
-    left: 5.6vw;
+    left: 90vw;
     background-color: var(--coral);
     color: #fff;
     padding: 10px 20px;
@@ -225,8 +215,8 @@ body {
 .moire-container1 {
     position: fixed;
     top: 0;
-    width: clamp(160px, 20vw, 320px);
-    height: clamp(160px, 20vw, 320px);
+    width: 20vw;
+    height: 20vw;
     background: repeating-linear-gradient(46deg, white, white 5px, var(--teal) 5px, var(--teal) 10px);
     mix-blend-mode: multiply;
     animation: rotateAnimation 6s reverse infinite ease-in-out;
@@ -251,8 +241,8 @@ body {
 #popup {
     position: fixed;
     width: clamp(260px, 32vw, 400px);
-    left: 50%;
-    top: 6.25vw;
+    left: 50vw;
+    top: 5vh;
     transform: translateX(-50%);
     background-color: #ecf0f1;
     border-radius: 5px;
@@ -268,8 +258,8 @@ body {
 .moire-container2 {
     position: fixed;
     top: 16.25vw;
-    width: clamp(120px, 18vw, 230px);
-    height: clamp(120px, 18vw, 230px);
+    width: 18vw;
+    height: 18vw;
     border-radius: 50%;
     background: repeating-linear-gradient(90deg, white, white 5px, var(--coral) 5px, var(--coral) 10px);
     mix-blend-mode: multiply;
@@ -285,6 +275,7 @@ body {
         linear-gradient(-60deg, #f0f0f0 25%, transparent 25%, transparent 75%, #f0f0f0 75%, #f0f0f0);
     background-size: 23px 34px;
     mix-blend-mode: soft-light;
+    opacity: 0.7;
     animation: rotateAnimation 6s alternate infinite ease-in-out;
     z-index: 5;
 }
@@ -319,11 +310,10 @@ body {
 #half-earth {
     position: fixed;
     display: none;
-    width: 100vw;
-    height: auto;
     left: 0;
-    bottom: 0;
-    object-fit: cover;
+    width: 102vw;
+    height: auto;
+    bottom: -5px;
     z-index: 5;
 }
 
@@ -339,11 +329,11 @@ body {
 }
 
 #finish {
-    position: fixed;
+    position: absolute;
     display: block;
-    top: 36vh;
-    left: 47vw;
-    width: clamp(220px, 32vw, 500px);
+    top: 30vh;
+    left: 36vw;
+    width: 30vw;
     padding: 10px;
     font-size: clamp(2.2rem, 6vw, 5rem);
     font-weight: bolder;
@@ -362,8 +352,8 @@ body {
     position: fixed;
     display: none;
     cursor: help;
-    width: clamp(240px, 36vw, 570px);
-    top: 21vh;
+    width: 36vw;
+    top: 20vh;
     left: 32vw;
     mix-blend-mode: color-burn;
     animation: floatAnimation 2s infinite ease-in-out;
@@ -392,20 +382,17 @@ button:hover {
 
 /* ---- existentialist portraits row ---- */
 .existentialists {
-    position: fixed;
-    top: 14vh;
-    left: 0;
-    width: 100%;
+    position: absolute;
+    top: 20vh;
+    width: 100vw;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: clamp(8px, 2vw, 20px);
-    padding: 0 2vw;
     z-index: 9;
 }
 
 .existentialists img {
-    position: relative;
+    position: absolute;
     width: clamp(90px, 14vw, 230px);
     height: auto;
     padding: 6px 10px;

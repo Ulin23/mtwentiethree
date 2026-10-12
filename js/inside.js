@@ -272,9 +272,24 @@ function initExistentialistWander() {
     });
 }
 
-/* ---- after a minute, reveal the closing "black hole in the universe" scene ---- */
+/* ---- after a minute, hide the café content and reveal the closing "black hole in the universe" scene ---- */
 function initSessionEnd() {
+    const ELEMENTS_TO_HIDE = [
+        '#summarization',
+        '#summary-background',
+        '#book-excerpts',
+        '.existentialists',
+        '.moire-container1',
+        '.moire-container2',
+        '.moire-container3',
+        '#timer',
+    ];
+
     setTimeout(() => {
+        document.querySelectorAll(ELEMENTS_TO_HIDE.join(', ')).forEach((el) => {
+            el.style.display = 'none';
+        });
+
         document.getElementById('end').style.display = 'block';
         document.getElementById('finish-video').style.display = 'block';
         document.getElementById('half-earth').style.display = 'block';

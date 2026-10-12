@@ -17,12 +17,17 @@ function initParallaxTitle() {
     const title = document.querySelector('.title');
     const subtitle = document.querySelector('.subtitle');
     const mirror = document.getElementById('mirror');
-    const FADE_DISTANCE_PX = 700;
 
-    window.addEventListener('scroll', () => {
-        const opacity = Math.min(1, Math.max(0, window.scrollY / FADE_DISTANCE_PX));
-        mirror.style.opacity = opacity;
-    });
+    // 1 at the top of the page (full mirror color) -> 0 at the bottom (pure whitesmoke)
+    function updateMirror() {
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+        mirror.style.opacity = 1 - Math.min(1, Math.max(0, progress));
+    }
+
+    window.addEventListener('scroll', updateMirror, { passive: true });
+    window.addEventListener('resize', updateMirror);
+    updateMirror(); // in case the browser restores a scrolled position on reload
 
     setTimeout(() => title.classList.add('active'), 500);
 
@@ -154,7 +159,7 @@ function initClickToRevealLocation() {
 /* ---- clicking "essence" scrolls to the circle ---- */
 function initEssenceScroll() {
     document.getElementById('essence').addEventListener('click', () => {
-        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
 }
 
@@ -180,7 +185,10 @@ function initWhoAmI() {
 
     startingPoint.addEventListener('click', () => {
         startingPoint.style.display = 'none';
-        document.getElementById('video').style.display = 'block';
+        const video = document.getElementById('video');
+        video.style.display = 'block';
+        video.currentTime = 0;
+        video.play().catch((err) => console.error('Time travel video failed to play:', err));
     });
 }
 

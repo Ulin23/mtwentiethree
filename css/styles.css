@@ -1,12 +1,3 @@
-/* ==========================================================================
-   Existentialist Café — landing page
-   Layout approach: instead of pixel-locked absolute positions (which only
-   looked right at one screen size), every element scales from vw units or
-   percentages of its own container. The collage images share position
-   classes (.art-*) between the normal and mirrored sets, so there is one
-   rule per image instead of two.
-   ========================================================================== */
-
 :root {
     --teal: #71CED9;
     --teal-dark: #496B73;
@@ -41,31 +32,30 @@ body {
 }
 
 /* ---- background layers ---- */
+/* no z-index here, so #background / #mirror can sit at the very back of the page */
 .container {
     position: relative;
     width: 100%;
-    z-index: 10;
 }
 
 #particles {
     position: fixed;
     inset: 0;
-    z-index: 12;
+    z-index: 10;
 }
 
+/* starts at full color and fades out to the whitesmoke background as you scroll (opacity set in script.js) */
 #mirror {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom right, rgba(113, 206, 217, 0.6), rgba(73, 107, 115, 0.8), rgba(21, 30, 38, 1));
-    z-index: 2;
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(to top left, rgba(73, 107, 115, 0.8), rgba(21, 30, 38, 1));
+    opacity: 1;
+    z-index: 1;
     pointer-events: none;
 }
 
 #background {
-    position: absolute;
+    position: fixed;
     inset: 0;
     background-color: var(--whitesmoke);
     z-index: 0;
@@ -83,7 +73,7 @@ body {
 .title {
     margin: 0;
     cursor: pointer;
-    color: var(--teal-dark);
+    color: var(--whitesmoke);
     font-size: clamp(1.1rem, 3vw, 2rem);
     opacity: .8;
     mix-blend-mode: multiply;
@@ -106,18 +96,18 @@ body {
     mix-blend-mode: multiply;
     font-size: clamp(0.75rem, 1.6vw, 1.1rem);
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
     transition: opacity 0.5s, transform 0.5s;
 }
 
 .subtitle.active {
     opacity: .9;
-    transform: translateY(0);
+    transform: translateY(10px);
 }
 
 /* ---- floating squares ---- */
 .square-container {
-    position: relative;
+    position: absolute;
     mix-blend-mode: hard-light;
     width: 100vw;
     height: 100vh;
@@ -125,7 +115,7 @@ body {
 }
 
 .square {
-    position: absolute;
+    position: relative;
     box-shadow: 2px 2px 2px white;
     background-color: var(--teal);
 }
@@ -137,28 +127,22 @@ body {
     padding: 6vw 5vw 0;
 }
 
-.interactive-text {
-    position: relative;
-    z-index: 13;
-    display: flex;
-    flex-wrap: wrap;
-    gap: clamp(12px, 2vw, 24px);
-    justify-content: center;
-    text-align: center;
-    max-width: 900px;
-    margin: 0 auto;
-}
 
 #time {
+    position: absolute;
+    top: 73.8%;
+    left: 2%;
+    width: 45%;
+    text-align: right;
     cursor: pointer;
     color: var(--coral);
     font-size: clamp(1.1rem, 2.4vw, 1.8rem);
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     background-color: var(--whitesmoke);
     padding: 6px 14px;
-    border-right: 10px solid var(--teal-dark);
-    mix-blend-mode: hard-light;
+    border-right: 16px solid var(--teal-dark);
     transition: font-size 0.3s ease-in-out;
+    z-index: 100;
 }
 
 #time:hover {
@@ -166,13 +150,17 @@ body {
 }
 
 #location {
+    position: absolute;
+    top: -12%;
+    left: 15%;
+    text-align: center;
     cursor: pointer;
     color: var(--whitesmoke);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: clamp(0.95rem, 1.8vw, 1.3rem);
     text-shadow: 1px 4px 2px var(--ink);
-    mix-blend-mode: hard-light;
     transition: all .3s ease-in-out;
+    z-index: 100;
 }
 
 #location:hover {
@@ -180,21 +168,29 @@ body {
 }
 
 #start {
-    max-width: 480px;
+    position: absolute;
+    top: 45%;
+    left: 85%;
+    width: 32%;
+    text-align: left;
     color: var(--ink);
     font-size: clamp(1rem, 2.2vw, 1.5rem);
     background-color: var(--teal);
     padding: 10px 14px;
     border-left: 16px solid var(--whitesmoke);
     mix-blend-mode: hard-light;
+    z-index: 100;
 }
 
 #essence {
+    position: absolute;
     cursor: pointer;
     color: gold;
+    padding: 0 6px;
     text-shadow: 1px 1px 1px var(--ink);
     transition: font-size 0.5s ease-in-out;
     display: inline-block;
+    z-index: 100;
 }
 
 #essence:hover {
@@ -202,26 +198,28 @@ body {
     color: var(--coral);
 }
 
-/* ---- collage stage ----
-   Each image keeps its position as a percentage of the collage box, so the
-   whole composition scales as one piece instead of breaking apart. */
+/* ---- collage stage ---- */
 .stage {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: clamp(24px, 5vw, 60px);
-    padding: clamp(24px, 6vw, 80px) 0;
+    padding: clamp(15%, 6vw, 80px) 0;
+
 }
 
 .collage-art {
-    position: relative;
+    position: absolute;
+    top: 30%;
     width: min(92vw, 1100px);
     aspect-ratio: 1200 / 650;
 }
 
 .collage-art--mirror {
+    position: absolute;
+    top: 85vh;
     transform: scaleY(-1);
-    opacity: .55;
+    opacity: .6;
 }
 
 .art {
@@ -231,6 +229,7 @@ body {
 
 .art-mirrored-x {
     transform: scaleX(-1);
+    position: absolute;
 }
 
 .art-open-book     { top: 42.9%; left: 8.3%;  width: 85.8%; z-index: 8; }
@@ -244,11 +243,12 @@ body {
 .art-wall-clock    { top: 38.6%; left: 38.3%; width: 28.3%; z-index: 15; }
 .art-cloud         { top: -8.6%; left: 31.7%; width: 66.7%; z-index: 16; }
 .art-earth-rotate  { top: 0%;    left: 0%;    width: 47.5%; z-index: 6; }
-.art-location-pin  { top: -1.4%; left: 20.8%; width: 5.4%;  mix-blend-mode: multiply; z-index: 7; }
+.art-location-pin  { top: -1.4%; left: 20.8%; width: 5.4%;  mix-blend-mode: hard-light; z-index: 7; }
 
 /* ---- "who am I" circle ---- */
 .circle {
-    position: relative;
+    position: absolute;
+    top: 170vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -258,7 +258,20 @@ body {
     background: radial-gradient(circle, rgb(200, 255, 255, .99) 10%, #8FFFFF 40%, var(--teal) 90%);
     box-shadow: 0 0 clamp(40px, 8vw, 120px) rgba(175, 245, 255, .64);
     animation: floatAnimation 2s infinite ease-in-out;
-    mix-blend-mode: screen;
+    opacity: 0.8;
+    mix-blend-mode: multiply;
+    z-index: 20;
+}
+
+/* invisible spacer: lets the page scroll 10vh further past the bottom of the circle */
+.circle::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 1px;
+    height: 23vh;
+    pointer-events: none;
 }
 
 #circletravel {
@@ -311,7 +324,7 @@ body {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    z-index: 23;
+    z-index: 1000;
     cursor: pointer;
 }
 
